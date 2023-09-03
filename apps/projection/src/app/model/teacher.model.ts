@@ -1,3 +1,5 @@
+import { ParentModel } from './parent.model';
+
 export const subject = [
   'Sciences',
   'History',
@@ -5,11 +7,9 @@ export const subject = [
   'Maths',
   'Sport',
 ] as const;
-export type Subject = typeof subject[number];
+export type Subject = (typeof subject)[number];
 
-export interface Teacher {
-  id: number;
-  firstname: string;
+export interface Teacher extends ParentModel {
   lastname: string;
   subject: Subject;
 }

@@ -1,5 +1,5 @@
-export interface City {
-  id: number;
-  name: string;
+import { ParentModel } from './parent.model';
+
+export interface City extends ParentModel {
   country: string;
 }
