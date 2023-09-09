@@ -1,5 +1,6 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NgForEmptyDirective } from './ng-for-empty.directive';
 
 interface Person {
   name: string;
@@ -7,19 +8,27 @@ interface Person {
 
 @Component({
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgForEmptyDirective],
   selector: 'app-root',
   template: `
-    <ng-container *ngIf="persons.length > 0; else emptyList">
-      <div *ngFor="let person of persons">
-        {{ person.name }}
-      </div>
-    </ng-container>
+    <div *ngFor="let person of persons; empty: emptyList">
+      {{ person.name }}
+    </div>
     <ng-template #emptyList>The list is empty !!</ng-template>
+    <button (click)="onAddPerson()">Add person</button>
+    <button (click)="onClear()">Clear</button>
   `,
-  styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  // Key learning, I can easily overload build in directive selectors, and if both imported, then both runs
   persons: Person[] = [];
+
+  onAddPerson(): void {
+    this.persons.push({ name: 'David' });
+  }
+
+  onClear(): void {
+    this.persons = [];
+  }
 }
