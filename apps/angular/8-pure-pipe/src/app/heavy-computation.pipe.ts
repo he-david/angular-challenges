@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class HeavyComputationPipe implements PipeTransform {
-  transform(name: string, ...args: number[]) {
+  transform(name: string, ...args: number[]): string {
     return `${name}-${args[0]}`;
   }
 }
