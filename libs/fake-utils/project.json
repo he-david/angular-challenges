@@ -3,8 +3,8 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/fake-utils/src",
   "prefix": "lib",
-  "tags": [],
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:ng-packagr-lite",
@@ -21,16 +21,6 @@
         }
       },
       "defaultConfiguration": "production"
-    },
-    "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "libs/fake-utils/**/*.ts",
-          "libs/fake-utils/**/*.html"
-        ]
-      }
     }
   }
 }
