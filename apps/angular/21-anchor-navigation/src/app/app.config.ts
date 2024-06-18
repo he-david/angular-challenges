@@ -5,7 +5,10 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(
       appRoutes,
-      withInMemoryScrolling({ anchorScrolling: 'enabled' }),
+      withInMemoryScrolling({
+        anchorScrolling: 'enabled',
+        scrollPositionRestoration: 'enabled',
+      }),
     ),
   ],
 };
