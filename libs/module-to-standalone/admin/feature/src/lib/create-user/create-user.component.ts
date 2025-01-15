@@ -1,7 +1,8 @@
-import { Component, NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
+  imports: [RouterLink],
   selector: 'lib-create-user',
   template: `
     Create User Form
@@ -12,14 +13,5 @@ import { RouterModule } from '@angular/router';
       Back
     </button>
   `,
-  standalone: false,
 })
 export class CreateUserComponent {}
-
-@NgModule({
-  imports: [
-    RouterModule.forChild([{ path: '', component: CreateUserComponent }]),
-  ],
-  declarations: [CreateUserComponent],
-})
-export class CreateUserModule {}

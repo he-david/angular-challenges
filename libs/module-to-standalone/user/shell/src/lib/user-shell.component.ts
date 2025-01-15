@@ -1,7 +1,9 @@
 import { TOKEN } from '@angular-challenges/module-to-standalone/core/providers';
 import { Component, Inject } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
+  imports: [RouterOutlet, RouterLink],
   selector: 'lib-user-shell',
   template: `
     -- User Panel --
@@ -27,7 +29,6 @@ import { Component, Inject } from '@angular/core';
   host: {
     class: 'flex flex-col p-4 gap-3 border border-blue',
   },
-  standalone: false,
 })
 export class UserShellComponent {
   constructor(@Inject(TOKEN) public token: string) {}

@@ -1,9 +1,11 @@
+import { provideToken } from '@angular-challenges/module-to-standalone/core/providers';
 import { Route } from '@angular/router';
 import { UserShellComponent } from './user-shell.component';
 
-export const userShellRoutes: Route[] = [
+export const USER_SHELL_ROUTES: Route[] = [
   {
     path: '',
+    providers: [provideToken('user-token')],
     component: UserShellComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -11,14 +13,14 @@ export const userShellRoutes: Route[] = [
         path: 'home',
         loadChildren: () =>
           import('@angular-challenges/module-to-standalone/user/home').then(
-            (m) => m.UserHomeModule,
+            (m) => m.USER_HOME_ROUTES,
           ),
       },
       {
         path: 'contact',
         loadChildren: () =>
           import('@angular-challenges/module-to-standalone/user/contact').then(
-            (m) => m.ContactFeatureModule,
+            (m) => m.CONTACT_ROUTES,
           ),
       },
     ],
